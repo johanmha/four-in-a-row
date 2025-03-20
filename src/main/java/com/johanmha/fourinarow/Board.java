@@ -4,13 +4,12 @@ package com.johanmha.fourinarow;
  * Board that can add chips to one o its columns
  */
 public class Board {
-    private int columns = 7;
-    private BoardColumn[] playingBoard = new BoardColumn[columns];
+    private BoardColumn[] playingBoard = new BoardColumn[GameConstants.BOARD_COLUMNS];
     private int fullColumnCounter = 0;
     private boolean isFull = false;
 
     public Board() {
-        for (int i = 0; i < columns; i++) {
+        for (int i = 0; i < GameConstants.BOARD_COLUMNS; i++) {
             playingBoard[i] = new BoardColumn();
         }
     }
@@ -21,7 +20,7 @@ public class Board {
 
         if (boardColumn.isFull()) {
             ++fullColumnCounter;
-            if (fullColumnCounter == columns) {
+            if (fullColumnCounter == GameConstants.BOARD_COLUMNS) {
                 isFull = true;
             }
         }

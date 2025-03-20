@@ -5,14 +5,12 @@ import org.junit.jupiter.api.Test;
 import com.johanmha.fourinarow.enums.ChipColor;
 
 class BoardTest {
-    int columns = 7;
-    int rows = 6;
 
     @Test
     void createBoard() {
         Board playingBoard = new Board();
         assertEquals(false, playingBoard.isFull());
-        assertEquals(false, playingBoard.isColumnFull(columns - 1));
+        assertEquals(false, playingBoard.isColumnFull(GameConstants.BOARD_COLUMNS - 1));
     }
 
     @Test
@@ -43,8 +41,8 @@ class BoardTest {
     void fillBoard() {
         Board playingBoard = new Board();
 
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < rows; j++) {
+        for (int i = 0; i < GameConstants.BOARD_COLUMNS; i++) {
+            for (int j = 0; j < GameConstants.BOARD_ROWS; j++) {
                 playingBoard.addChipToColumn(i, new Chip(ChipColor.YELLOW));
             }
         }
