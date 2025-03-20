@@ -6,7 +6,7 @@ import com.johanmha.fourinarow.enums.ChipColor;
 
 class ChipTest {
     @Test
-    void testChipCreation() {
+    void chipCreation() {
         Chip redChip = new Chip(ChipColor.RED);
         assertEquals(ChipColor.RED, redChip.getColor());
 

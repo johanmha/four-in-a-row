@@ -6,7 +6,7 @@ import com.johanmha.fourinarow.enums.ChipColor;
 
 class BoardColumnTest {
     @Test
-    void testBoardColumnCreation() {
+    void boardColumnCreation() {
         BoardColumn column = new BoardColumn();
         assertEquals(false, column.isFull());
     }
