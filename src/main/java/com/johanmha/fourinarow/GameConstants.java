@@ -1,6 +1,9 @@
 package com.johanmha.fourinarow;
 
-public class GameConstants {
+/**
+ * Constants related to the game setup
+ */
+public final class GameConstants {
     private GameConstants() {}
 
     public static final int BOARD_COLUMNS = 7;
