@@ -1,5 +1,8 @@
 package com.johanmha.fourinarow;
 
+/**
+ * Board that can add chips to one o its columns
+ */
 public class Board {
     private int columns = 7;
     private BoardColumn[] playingBoard = new BoardColumn[columns];

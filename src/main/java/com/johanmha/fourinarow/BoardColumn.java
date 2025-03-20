@@ -1,5 +1,8 @@
 package com.johanmha.fourinarow;
 
+/**
+ * BoardColum that can add Chip to it self.
+ */
 public class BoardColumn {
     private Chip[] column = new Chip[6];
     private boolean isFull = false;
