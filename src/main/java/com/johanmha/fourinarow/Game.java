@@ -1,36 +1,57 @@
 package com.johanmha.fourinarow;
 
 import com.johanmha.fourinarow.enums.ChipColor;
+import com.johanmha.fourinarow.enums.GameResult;
 
 /**
- * Game holds the players and board.
+ * Game holds the players and their respective bitmap of the board + the game board. Can place chip.
+ * It is the responsibility of the user of the game to check the result
  */
 public class Game {
 
     private Board playingBoard = new Board();
     private Player[] players = new Player[2];
+    private Bitmap[] playerBitMaps = new Bitmap[2];
+    private int gameResult = -1;
+
     private int currentPlayer = 0;
 
     public Game() {
         players[0] = new Player(ChipColor.RED, playingBoard);
         players[1] = new Player(ChipColor.YELLOW, playingBoard);
+
+        playerBitMaps[0] = new Bitmap();
+        playerBitMaps[1] = new Bitmap();
     }
 
     /**
      * Play chip for the current player
      * 
-     * @param column
-     * @return position of chip in column
+     * @param column - which column to place chip in
+     * @return row - position of chip in column
      */
-    public int playChip(int column) {
-        int chipPosition = players[currentPlayer].addChip(column);
-        nextPlayer();
+    public int placeChip(int column) {
+        int row = players[currentPlayer].addChip(column);
 
-        return chipPosition;
+        if (row != -1) {
+            playerBitMaps[currentPlayer].addChipToBitmap(column, row);
+
+            if (playerBitMaps[currentPlayer].isWin()) {
+                gameResult = currentPlayer;
+            }
+
+            if (playingBoard.isFull() && gameResult == -1) {
+                gameResult = 2;
+            }
+
+            nextPlayer();
+        }
+
+        return row;
     }
 
-    public boolean isBoardFull() {
-        return playingBoard.isFull();
+    public int getGameResult() {
+        return gameResult;
     }
 
     public boolean isColumnFull(int column) {
@@ -40,5 +61,4 @@ public class Game {
     private void nextPlayer() {
         currentPlayer = 1 - currentPlayer;
     }
-
 }
