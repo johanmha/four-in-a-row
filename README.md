@@ -11,7 +11,7 @@ Uses bitmap på keep track of game state and check for win condition. It is comp
 The bitmap is a 64-bit integer (long), where each bit represents a position on the board like this:
 
 ```
-6 13 20 27 34 41 48 ← Extra row for easier implementation
+6 13 20 27 34 41 48 ← Extra row will always be zero.
 5 12 19 26 33 40 47 ← Top row
 4 11 18 25 32 39 46
 3 10 17 24 31 38 45
@@ -42,4 +42,83 @@ index = (6 * 7) + 5 = 47
 
 ## Checking for win condition
 
-Kommer
+Left shift pluss AND (&) bit operator. First look for pair, and then look for double pair with double shift
+
+-   1 left shift for vertical
+-   7 left shift for horisontal
+-   8 left shift for diagonal upwards
+-   6 left shift fir diagonal downwards
+
+```
+6 13 20 27 34 41 48 ← Extra row for easier implementation
+5 12 19 26 33 40 47 ← Top row
+4 11 18 25 32 39 46
+3 10 17 24 31 38 45
+2 9 16 23 30 37 44
+1 8 15 22 29 36 43
+0 7 14 21 28 35 42 ← Bottom row
+```
+
+```
+0 0 0 0 0 0 0 ← Extra row will always be zero.
+0 0 0 0 0 0 0 ← Top row
+0 0 0 0 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0 ← Bottom row
+```
+
+shift of 1 with & gives:
+
+```
+0 0 0 0 0 0 0 ← Extra row will always be zero.
+0 0 0 0 0 0 0 ← Top row
+0 0 0 0 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0
+0 0 0 1 0 0 0
+0 0 0 0 0 0 0 ← Bottom row
+```
+
+Double shift then gives
+
+```
+0 0 0 0 0 0 0 ← Extra row will always be zero.
+0 0 0 0 0 0 0 ← Top row
+0 0 0 0 0 0 0
+0 0 0 1 0 0 0
+0 0 0 0 0 0 0
+0 0 0 0 0 0 0
+0 0 0 0 0 0 0 ← Bottom row
+```
+
+And since the long is larger then 0, there is a win.
+
+### How the top row protects against false positives
+
+Take this case (which is impossible in a game, but that's irrelevant):
+
+```
+0 0 0 0 0 0 0 ← Extra row of  zeros protects agains false positives.
+0 0 1 0 0 0 0 ← Top row
+0 1 0 0 0 0 0
+1 0 0 0 0 0 0
+0 0 0 0 0 0 0
+0 0 0 0 0 0 0
+1 1 1 1 1 1 1 ← Bottom row
+```
+
+An 8 shift now gives:
+
+```
+0 0 0 0 0 0 0 ← Extra row of  zeros protects agains false positives.
+0 0 1 0 0 0 0 ← Top row
+0 1 0 0 0 0 0
+0 0 0 0 0 0 0
+0 0 0 0 0 0 0
+0 0 0 0 0 0 0
+0 0 0 0 0 0 0 ← Bottom row is after shift #1 always all zero
+```
+
+A double 8 shift now gives a 0 bit map as the top and bottom rows are both zero.

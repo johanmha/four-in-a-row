@@ -1,7 +1,6 @@
 package com.johanmha.fourinarow;
 
 import com.johanmha.fourinarow.enums.ChipColor;
-import com.johanmha.fourinarow.enums.GameResult;
 
 /**
  * Game holds the players and their respective bitmap of the board + the game board. Can place chip.
@@ -34,9 +33,9 @@ public class Game {
         int row = players[currentPlayer].addChip(column);
 
         if (row != -1) {
-            playerBitMaps[currentPlayer].addChipToBitmap(column, row);
+            boolean winFound = playerBitMaps[currentPlayer].addChipToBitmap(column, row);
 
-            if (playerBitMaps[currentPlayer].isWin()) {
+            if (winFound) {
                 gameResult = currentPlayer;
             }
 

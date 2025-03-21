@@ -16,12 +16,13 @@ class BitmapTest {
         // expected bitmap: 110000001 = 385
         assertEquals(385L, gameBitmap.getGameBitmap());
         assertEquals("110000001", Long.toBinaryString(gameBitmap.getGameBitmap()));
+        assertEquals(false, gameBitmap.addChipToBitmap(3, 3));
     }
 
-    @Test
-    void checkWinCondition() {
-        Bitmap gameBitmap = new Bitmap();
-        assertEquals(false, gameBitmap.isWin());
-    }
+    // @Test
+    // void checkHorisontalWinCondition() {
+    // Bitmap gameBitmap = new Bitmap();
+    // gameBitmap.addChipToBitmap(0, 0);
+    // }
 }
 
