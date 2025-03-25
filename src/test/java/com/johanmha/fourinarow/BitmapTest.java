@@ -19,10 +19,69 @@ class BitmapTest {
         assertEquals(false, gameBitmap.addChipToBitmap(3, 3));
     }
 
-    // @Test
-    // void checkHorisontalWinCondition() {
-    // Bitmap gameBitmap = new Bitmap();
-    // gameBitmap.addChipToBitmap(0, 0);
-    // }
+    @Test
+    void checkHorisontalWinCondition() {
+        Bitmap gameBitmap = new Bitmap();
+        assertEquals(false, gameBitmap.addChipToBitmap(6, 0));
+        assertEquals(false, gameBitmap.addChipToBitmap(6, 1));
+        assertEquals(false, gameBitmap.addChipToBitmap(6, 2));
+        assertEquals(true, gameBitmap.addChipToBitmap(6, 3));
+    }
+
+    @Test
+    void checkFalseHorisontalWinCondition() {
+        Bitmap gameBitmap = new Bitmap();
+        assertEquals(false, gameBitmap.addChipToBitmap(6, 0));
+        assertEquals(false, gameBitmap.addChipToBitmap(6, 1));
+        assertEquals(false, gameBitmap.addChipToBitmap(6, 4));
+        assertEquals(false, gameBitmap.addChipToBitmap(6, 5));
+    }
+
+    @Test
+    void checkVerticalWinCondition() {
+        Bitmap gameBitmap = new Bitmap();
+        assertEquals(false, gameBitmap.addChipToBitmap(6, 4));
+        assertEquals(false, gameBitmap.addChipToBitmap(5, 4));
+        assertEquals(false, gameBitmap.addChipToBitmap(4, 4));
+        assertEquals(true, gameBitmap.addChipToBitmap(3, 4));
+    }
+
+    @Test
+    void checkdiagonalUpWinCondition() {
+        Bitmap gameBitmap = new Bitmap();
+        assertEquals(false, gameBitmap.addChipToBitmap(0, 1));
+        assertEquals(false, gameBitmap.addChipToBitmap(1, 2));
+        assertEquals(false, gameBitmap.addChipToBitmap(2, 3));
+        assertEquals(true, gameBitmap.addChipToBitmap(3, 4));
+    }
+
+    @Test
+    void checkFalseDiagonalUpWinCondition() {
+        Bitmap gameBitmap = new Bitmap();
+        assertEquals(false, gameBitmap.addChipToBitmap(0, 4));
+        assertEquals(false, gameBitmap.addChipToBitmap(1, 5));
+        assertEquals(false, gameBitmap.addChipToBitmap(2, 0));
+        assertEquals(false, gameBitmap.addChipToBitmap(3, 1));
+    }
+
+
+    @Test
+    void checkdiagonalDownWinCondition() {
+        Bitmap gameBitmap = new Bitmap();
+        assertEquals(false, gameBitmap.addChipToBitmap(1, 5));
+        assertEquals(false, gameBitmap.addChipToBitmap(2, 4));
+        assertEquals(false, gameBitmap.addChipToBitmap(4, 2));
+        assertEquals(true, gameBitmap.addChipToBitmap(3, 3));
+    }
+
+    @Test
+    void checkFalseDiagonalDownWinCondition() {
+        Bitmap gameBitmap = new Bitmap();
+        assertEquals(false, gameBitmap.addChipToBitmap(0, 2));
+        assertEquals(false, gameBitmap.addChipToBitmap(1, 1));
+        assertEquals(false, gameBitmap.addChipToBitmap(2, 0));
+        assertEquals(false, gameBitmap.addChipToBitmap(3, 5));
+        assertEquals(false, gameBitmap.addChipToBitmap(4, 4));
+    }
 }
 
