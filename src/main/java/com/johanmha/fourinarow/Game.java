@@ -30,6 +30,10 @@ public class Game {
      * @return row - position of chip in column
      */
     public int placeChip(int column) {
+        if (gameResult != -1) {
+            return -1;
+        }
+
         int row = players[currentPlayer].addChip(column);
 
         if (row != -1) {
