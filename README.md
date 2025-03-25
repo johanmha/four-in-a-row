@@ -119,7 +119,7 @@ Take this case (which is impossible in a game, but that's irrelevant):
 An 8 shift now gives:
 
 ```
-0 0 0 0 0 0 0 ← Extra row of  zeros protects agains false positives.
+0 0 0 0 0 0 0 ← Extra row of  zeros protects against false positives.
 0 0 1 0 0 0 0 ← Top row
 0 1 0 0 0 0 0
 0 0 0 0 0 0 0
