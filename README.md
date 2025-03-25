@@ -2,6 +2,13 @@
 
 My implementation of the classic four in a row AKA connect four
 
+## Results
+
+-1 - No result
+0 - Red player (player 0) won
+1 - Yellow player (player 1) won
+2 - Draw (board is full)
+
 ## Bitmap
 
 ## Intro to bitmap
