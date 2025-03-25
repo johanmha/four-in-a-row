@@ -33,4 +33,8 @@ public class BoardColumn {
     public boolean isFull() {
         return isFull;
     }
+
+    public Chip getChip(int row) {
+        return column[row];
+    }
 }

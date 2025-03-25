@@ -2,6 +2,7 @@ package com.johanmha.fourinarow;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+import com.johanmha.fourinarow.enums.ChipColor;
 
 class GameTest {
 
@@ -26,6 +27,15 @@ class GameTest {
 
         assertEquals(true, game.isColumnFull(6));
         assertEquals(-1, game.placeChip(6));
+    }
+
+    @Test
+    void getChip() {
+        Game game = new Game();
+        game.placeChip(3);
+        game.placeChip(3);
+        assertEquals(ChipColor.RED, game.getChip(3, 0).getColor());
+        assertEquals(ChipColor.YELLOW, game.getChip(3, 1).getColor());
     }
 
 }

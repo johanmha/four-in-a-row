@@ -64,4 +64,8 @@ public class Game {
     private void nextPlayer() {
         currentPlayer = 1 - currentPlayer;
     }
+
+    public Chip getChip(int column, int row) {
+        return playingBoard.getChip(column, row);
+    }
 }

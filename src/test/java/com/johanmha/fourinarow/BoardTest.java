@@ -49,4 +49,15 @@ class BoardTest {
 
         assertEquals(true, playingBoard.isFull());
     }
+
+    @Test
+    void getChip() {
+        Board playingBoard = new Board();
+
+        playingBoard.addChipToColumn(2, new Chip(ChipColor.RED));
+        playingBoard.addChipToColumn(2, new Chip(ChipColor.YELLOW));
+
+        assertEquals(ChipColor.RED, playingBoard.getChip(2, 0).getColor());
+        assertEquals(ChipColor.YELLOW, playingBoard.getChip(2, 1).getColor());
+    }
 }

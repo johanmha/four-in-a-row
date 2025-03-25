@@ -42,4 +42,13 @@ class BoardColumnTest {
         assertEquals(-1, addWhenFull);
         assertEquals(true, boardColumn.isFull());
     }
+
+    @Test
+    void getChip() {
+        BoardColumn boardColumn = new BoardColumn();
+        boardColumn.addChip(new Chip(ChipColor.RED));
+        boardColumn.addChip(new Chip(ChipColor.YELLOW));
+        assertEquals(ChipColor.RED, boardColumn.getChip(0).getColor());
+        assertEquals(ChipColor.YELLOW, boardColumn.getChip(1).getColor());
+    }
 }

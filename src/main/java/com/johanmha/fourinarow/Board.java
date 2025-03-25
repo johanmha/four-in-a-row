@@ -15,6 +15,10 @@ public class Board {
     }
 
     public int addChipToColumn(int columnNumber, Chip chip) {
+        if (columnNumber >= GameConstants.BOARD_COLUMNS) {
+            return -1;
+        }
+
         BoardColumn boardColumn = playingBoard[columnNumber];
         int chipPosition = boardColumn.addChip(chip);
 
@@ -34,5 +38,9 @@ public class Board {
 
     public boolean isColumnFull(int columnNumber) {
         return playingBoard[columnNumber].isFull();
+    }
+
+    public Chip getChip(int column, int row) {
+        return playingBoard[column].getChip(row);
     }
 }
